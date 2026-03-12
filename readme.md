@@ -6,7 +6,7 @@ Jenkins automates the Software Development Lifecycle (SDLC) by running pipelines
 
 In this project, Jenkins interacts with a Kubernetes cluster using kubectl to deploy an NGINX workload and validate connectivity.
 
-## Architecture
+## Architecture 🧰
 
 Developer Push
       ↓
