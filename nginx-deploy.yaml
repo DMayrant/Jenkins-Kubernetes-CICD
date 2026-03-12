@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deploy
+  name: nginx-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deploy
+  template:
+    metadata:
+      labels:
+        app: nginx-deploy
+    spec:
+      serviceAccountName: jenkins
+      automountServiceAccountToken: false
+      containers:
+        - image: nginx:1.29.0
+          name: nginx
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "256Mi"
+            requests:
+              memory: "128Mi"
+              cpu: "75m"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 8
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 15
