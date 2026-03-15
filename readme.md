@@ -6,34 +6,34 @@ Jenkins automates the Software Development Lifecycle (SDLC) by running pipelines
 
 In this project, Jenkins interacts with a Kubernetes cluster using kubectl to deploy an NGINX workload and validate connectivity.
 
-## Architecture 🧰
+# CI/CD Pipeline Security in Jenkins 🛡️
 
-Developer Push
-      ↓
-Git Repository
-      ↓
-Jenkins Pipeline
-      ↓
-kubectl apply
-      ↓
-Kubernetes Deployment
-      ↓
-Service Validation
+This CI/CD pipeline integrates multiple security tools to enforce DevSecOps practices throughout the software delivery lifecycle.
 
-## Jenkins Server
+The pipeline performs automated security testing at different stages to detect vulnerabilities before deployment.
 
-Jenkins runs locally and manages the CI/CD pipeline.
+ - Security Tools Integrated
 
-Access Jenkins:
+Trivy 🔐 — Container Image Scanning
+Scans container images for known vulnerabilities (CVEs) in OS packages and application dependencies before deployment.
 
-http://localhost:8080
+Snyk 🛡️ — Dependency Vulnerability Scanning
+Identifies security issues in application dependencies and container images using an extensive vulnerability database.
 
-## Kubernetes Deployment Validation
+Kubescape 🩻 — Kubernetes Security Posture Management
+Scans Kubernetes clusters against security frameworks such as MITRE ATT&CK, NSA, and CIS benchmarks to detect misconfigurations and compliance violations.
 
-After deployment, the service can be validated using port forwarding.
+OWASP ZAP ⚡️ — Dynamic Application Security Testing (DAST)
+Performs runtime security testing to detect vulnerabilities such as:
 
-```bash
-kubectl port-forward svc/nginx-deploy 8080:80
-sleep 10
-curl http://localhost:8080
-```
+- SQL Injection
+
+- Cross-Site Scripting (XSS)
+
+- insecure headers
+
+- Broken authentication
+
+- Other OWASP Top 10 risks
+
+
