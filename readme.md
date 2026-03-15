@@ -4,7 +4,7 @@ This project demonstrates a CI/CD pipeline using Jenkins to deploy and validate 
 
 Jenkins automates the Software Development Lifecycle (SDLC) by running pipelines defined in a Jenkinsfile. These pipelines execute tasks such as security scanning, manifest generation, application deployment, and post-deployment validation.
 
-In this project, Jenkins interacts with a Kubernetes cluster using kubectl to deploy an NGINX workload and validate connectivity.
+In this project, Jenkins interacts with a Kubernetes cluster using kubectl to deploy an NGINX workload and validate connectivity, while integrating security scans (Trivy, SNYK, OWASP ZAP, and Kubescape) within the CI/CD pipeline for compliance with OWASP Top 10, NSA, CIS benchmarks and the MITRE ATT&CK framework. 
 
 # CI/CD Pipeline Security in Jenkins 🛡️
 
